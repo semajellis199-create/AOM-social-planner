@@ -1,0 +1,51 @@
+Publish the AOM Planner as an installable app (GitHub Pages)
+================================================================
+
+The "AOM Planner - GitHub Pages Site" folder is a ready-to-upload website. Put its
+contents on GitHub Pages and you get a real link that people can visit, and that
+they (or you) can "install" like an app — on a phone's home screen or as a desktop
+app window, with offline support.
+
+You'll need a (free) GitHub account for this part.
+
+1. Go to https://github.com/new and create a new repository.
+   - Give it any name, e.g. "aom-social-planner"
+   - Set it to Public (GitHub Pages needs a public repo on the free plan)
+   - Don't check "Add a README" — leave it empty
+
+2. Upload the files.
+   - On the new repo's page, click "uploading an existing file"
+   - Drag in everything from inside the "AOM Planner - GitHub Pages Site" folder:
+     index.html, manifest.json, service-worker.js, and the "icons" folder
+   - Commit the upload
+
+3. Turn on Pages.
+   - Go to the repo's Settings tab > Pages (left sidebar)
+   - Under "Build and deployment," set Source to "Deploy from a branch"
+   - Branch: main, Folder: / (root) — click Save
+
+4. Wait about a minute, then visit:
+   https://<your-github-username>.github.io/<repo-name>/
+   That's your live, shareable link.
+
+5. Install it.
+   - On a phone: open the link, then use the browser's "Add to Home Screen"
+     (Safari: Share button > Add to Home Screen. Chrome on Android: menu > Install app)
+   - On a desktop: open the link in Chrome or Edge — an install icon appears in the
+     address bar
+
+Publishing an update later
+----------------------------
+If you change the planner and want to push new content live: re-upload the changed
+files to the same repo (they'll overwrite), AND open service-worker.js and bump the
+version number in this line near the top:
+
+    const CACHE_NAME = 'aom-planner-v1';
+
+Change it to 'aom-planner-v2', 'v3', etc. each time. Without that, people who already
+installed the app may keep seeing the old cached version instead of your update.
+
+Note: this is separate from the plain .html file and the Mac/Windows desktop
+versions — those still work exactly as before, with no account or internet needed.
+This GitHub Pages version is only for when you want a real installable web app with
+a shareable link.
